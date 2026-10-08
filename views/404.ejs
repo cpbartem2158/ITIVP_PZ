@@ -1,0 +1,8 @@
+<%- include('partials/header') %>
+<section class="error-page">
+  <p class="error-code">404</p>
+  <h1>Страница не найдена</h1>
+  <p>Адрес <code><%= requestedUrl %></code> не открывается.</p>
+  <p class="actions"><a class="button" href="/<%= authSuffix %>">На главную</a></p>
+</section>
+<%- include('partials/footer') %>

@@ -1,0 +1,15 @@
+<%- include('partials/header') %>
+<section class="card narrow">
+  <h1>Вход</h1>
+  <% if (user.authorized) { %>
+    <p>Вы вошли как <%= user.name %>.</p>
+    <p class="actions"><a class="button" href="/?auth=1">К списку заявок</a></p>
+  <% } else { %>
+    <p>Добавлять заявки может только оператор. Вход имитируется: в адресе должен быть параметр <code>auth=1</code>.</p>
+    <p class="actions">
+      <a class="button" href="/?auth=1">Войти как оператор</a>
+      <a href="/add?auth=1">Сразу открыть форму</a>
+    </p>
+  <% } %>
+</section>
+<%- include('partials/footer') %>

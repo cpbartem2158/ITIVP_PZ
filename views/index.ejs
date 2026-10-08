@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+<h1>Заявки</h1>
+<p class="lead">Вы вошли как <%= user.name %>. Всего заявок: <%= tickets.length %>.</p>
+
+<% if (tickets.length === 0) { %>
+  <p class="card">Заявок пока нет. Добавьте первую через форму.</p>
+<% } else { %>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Номер</th>
+          <th>Тема</th>
+          <th>Статус</th>
+          <th>Приоритет</th>
+          <th>Автор</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% tickets.forEach(function (ticket) { %>
+          <tr>
+            <td><%= ticket.id %></td>
+            <td><a href="/item/<%= ticket.id %><%= authSuffix %>"><%= ticket.title %></a></td>
+            <td><%- include('partials/badge', { kind: 'status', label: ticket.status }) %></td>
+            <td><%- include('partials/badge', { kind: 'priority', label: ticket.priority }) %></td>
+            <td><%= ticket.author %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+<% } %>
+<%- include('partials/footer') %>

@@ -1,0 +1,55 @@
+<%- include('partials/header') %>
+<h1>Новая заявка</h1>
+<p class="lead">Заявка попадёт в общий список и сохранится в памяти до перезапуска сервера.</p>
+
+<form class="card" action="/add<%= authSuffix %>" method="post">
+  <% if (errors.length > 0) { %>
+    <div class="form-error">
+      <p>Заявка не добавлена:</p>
+      <ul>
+        <% errors.forEach(function (message) { %>
+          <li><%= message %></li>
+        <% }) %>
+      </ul>
+    </div>
+  <% } %>
+
+  <label>
+    Тема (<%= limits.title.min %>–<%= limits.title.max %> символов)
+    <input type="text" name="title" value="<%= form.title %>"
+           minlength="<%= limits.title.min %>" maxlength="<%= limits.title.max %>" required>
+  </label>
+
+  <label>
+    Описание (<%= limits.description.min %>–<%= limits.description.max %> символов)
+    <textarea name="description"
+              minlength="<%= limits.description.min %>" maxlength="<%= limits.description.max %>" required><%= form.description %></textarea>
+  </label>
+
+  <label>
+    Статус
+    <select name="status">
+      <% statuses.forEach(function (status) { %>
+        <option value="<%= status %>" <%= form.status === status ? 'selected' : '' %>><%= status %></option>
+      <% }) %>
+    </select>
+  </label>
+
+  <label>
+    Приоритет
+    <select name="priority">
+      <% priorities.forEach(function (priority) { %>
+        <option value="<%= priority %>" <%= form.priority === priority ? 'selected' : '' %>><%= priority %></option>
+      <% }) %>
+    </select>
+  </label>
+
+  <label>
+    Автор (<%= limits.author.min %>–<%= limits.author.max %> символов)
+    <input type="text" name="author" value="<%= form.author %>"
+           minlength="<%= limits.author.min %>" maxlength="<%= limits.author.max %>" required>
+  </label>
+
+  <button type="submit">Добавить заявку</button>
+</form>
+<%- include('partials/footer') %>

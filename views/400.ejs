@@ -1,0 +1,8 @@
+<%- include('partials/header') %>
+<section class="error-page">
+  <p class="error-code"><%= status %></p>
+  <h1>Некорректный запрос</h1>
+  <p><%= message %></p>
+  <p class="actions"><a class="button" href="/<%= authSuffix %>">На главную</a></p>
+</section>
+<%- include('partials/footer') %>

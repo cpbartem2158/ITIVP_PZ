@@ -1,0 +1,17 @@
+<%
+const maps = {
+  status: {
+    'Новая': 'badge-new',
+    'В работе': 'badge-work',
+    'Решена': 'badge-done',
+    'Закрыта': 'badge-closed',
+  },
+  priority: {
+    'Низкий': 'badge-low',
+    'Средний': 'badge-mid',
+    'Высокий': 'badge-high',
+  },
+};
+const cls = (maps[kind] && maps[kind][label]) || 'badge-mid';
+%>
+<span class="badge <%= cls %>"><%= label %></span>

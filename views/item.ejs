@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+<article class="card">
+  <h1><%= ticket.title %></h1>
+  <dl class="meta">
+    <dt>Номер</dt>
+    <dd><%= ticket.id %></dd>
+    <dt>Статус</dt>
+    <dd><%- include('partials/badge', { kind: 'status', label: ticket.status }) %></dd>
+    <dt>Приоритет</dt>
+    <dd><%- include('partials/badge', { kind: 'priority', label: ticket.priority }) %></dd>
+    <dt>Автор</dt>
+    <dd><%= ticket.author %></dd>
+  </dl>
+  <h2>Описание</h2>
+  <p class="description"><%= ticket.description %></p>
+  <p class="actions"><a href="/<%= authSuffix %>">К списку заявок</a></p>
+</article>
+<%- include('partials/footer') %>
